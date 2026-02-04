@@ -1,0 +1,612 @@
+">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandra Susanto - Portfolio</title>
+    <meta name="description" content="Portfolio Viandra Susanto - Pelajar & Calon Ahli Pangan yang berfokus pada pertanian berkelanjutan dan ketahanan pangan">
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a1810;
+            --bg-secondary: #1a2f23;
+            --text-primary: #e8f5e9;
+            --accent-primary: #4caf50;
+            --accent-secondary: #81c784;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f1f8e9;
+            --bg-secondary: #ffffff;
+            --text-primary: #1b5e20;
+            --accent-primary: #66bb6a;
+            --accent-secondary: #4caf50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .patina-font {
+            font-family: 'Cinzel Decorative', Georgia, serif;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floating-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 24, 16, 0.8);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .header {
+            background: rgba(241, 248, 233, 0.9);
+            border-bottom: 1px solid rgba(102, 187, 106, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.6)); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-primary);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-primary);
+            margin: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-primary);
+            margin: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Section Styling */
+        .section {
+            position: relative;
+            padding: 100px 20px;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border-radius: 50%;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 1rem;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--bg-primary);
+            padding-left: 1.5rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-primary);
+            color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+                padding: 100px 20px 60px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Animated Background -->
+        <div class="animated-bg" id="animatedBg"></div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+                <h1 class="patina-font" style="font-size: 1.8rem; margin: 0;" id="headerName">Viandra Susanto</h1>
+                
+                <nav class="desktop-nav" style="display: flex; align-items: center; gap: 2rem;">
+                    <a href="#home" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Beranda</a>
+                    <a href="#about" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Tentang</a>
+                    <a href="#skills" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Keahlian</a>
+                    <a href="#contact" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Kontak</a>
+                    
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="id">ID</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="theme-toggle" id="themeToggle">☀️</button>
+                </nav>
+
+                <button class="mobile-menu-btn theme-toggle" id="mobileMenuBtn">☰</button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Beranda</a>
+            <a href="#about">Tentang</a>
+            <a href="#skills">Keahlian</a>
+            <a href="#contact">Kontak</a>
+            <div style="display: flex; justify-content: space-between; padding: 1rem; gap: 1rem;">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="id">ID</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button class="theme-toggle" id="themeToggleMobile">☀️</button>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content fade-in">
+                <h2 class="hero-title patina-font" id="heroName">Viandra Susanto</h2>
+                <p class="hero-subtitle" id="heroProfession">Pelajar & Calon Ahli Pangan</p>
+                <p class="hero-tagline" id="heroTagline">Crafting Sustainable Future Through Agriculture</p>
+                <div>
+                    <a href="#about" class="btn-primary">Lihat Profil</a>
+                    <a href="#contact" class="btn-secondary">Hubungi Saya</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title patina-font fade-in">Tentang Saya</h2>
+                
+                <div class="about-grid">
+                    <div class="about-card fade-in">
+                        <h3>🌱 Latar Belakang</h3>
+                        <p id="aboutBackground">Saya adalah pelajar di SMAN 1 Subang yang memiliki ketertarikan mendalam pada bidang pertanian dan bercocok tanam. Terbiasa dengan tantangan lapangan, saya memiliki ketahanan dalam berbagai kondisi cuaca dan lingkungan.</p>
+                    </div>
+                    
+                    <div class="about-card fade-in">
+                        <h3>🎯 Visi & Misi</h3>
+                        <p id="aboutVision">Memiliki cita-cita untuk berkarier sebagai ahli pangan di Pemerintah Daerah. Berkomitmen menempuh pendidikan di bidang pertanian, pengolahan limbah, dan ketahanan pangan untuk masa depan yang berkelanjutan.</p>
+                    </div>
+                    
+                    <div class="about-card fade-in">
+                        <h3>💚 Passion</h3>
+                        <p id="aboutPassion">Hobi saya adalah menanam pohon dan bertani. Saya percaya bahwa pertanian berkelanjutan adalah kunci untuk masa depan yang lebih hijau dan sejahtera bagi Indonesia.</p>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">Tahun</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">SMAN 1</div>
+                        <div class="stat-label" id="locationLabel">Subang</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">🌾</div>
+                        <div class="stat-label">Pertanian</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="section-title patina-font fade-in">Keahlian & Minat</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">🌱</div>
+                        <div class="skill-name">Bercocok Tanam</div>
+                        <p style="opacity: 0.8; font-size: 0.95rem;">Pengalaman dalam menanam dan merawat berbagai jenis tanaman</p>
+                    </div>
+                    
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">🌾</div>
+                        <div class="skill-name">Pertanian Berkelanjutan</div>
+                        <p style="opacity: 0.8; font-size: 0.95rem;">Pemahaman tentang praktik pertanian yang ramah lingkungan</p>
+                    </div>
+                    
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">🍃</div>
+                        <div class="skill-name">Ketahanan Pangan</div>
+                        <p style="opacity: 0.8; font-size: 0.95rem;">Minat dalam sistem pangan yang berkelanjutan</p>
+                    </div>
+                    
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">♻️</div>
+                        <div class="skill-name">Pengolahan Limbah</div>
+    
