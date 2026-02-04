@@ -1,33 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viandra Susanto - Portfolio</title>
-    <meta name="description" content="Portfolio Viandra Susanto - Pelajar & Calon Ahli Pangan yang berfokus pada pertanian berkelanjutan dan ketahanan pangan">
+    <title>Steampunk Portfolio - Professional Creative Portfolio</title>
+    <meta name="description" content="Personal portfolio showcasing creative projects across multiple phunk themes - from Stonephunk foundations to Cyberphunk innovations">
     <script src="/_sdk/element_sdk.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap');
         
         body {
             box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a1810;
-            --bg-secondary: #1a2f23;
-            --text-primary: #e8f5e9;
-            --accent-primary: #4caf50;
-            --accent-secondary: #81c784;
-        }
-
-        [data-theme="light"] {
-            --bg-primary: #f1f8e9;
-            --bg-secondary: #ffffff;
-            --text-primary: #1b5e20;
-            --accent-primary: #66bb6a;
-            --accent-secondary: #4caf50;
         }
 
         * {
@@ -36,585 +20,821 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --accent-bronze: #cd7f32;
+            --accent-gold: #d4af37;
+            --text-light: #e6edf3;
+            --text-dim: #8b949e;
+            --gear-rotation: 0deg;
+        }
+
         body {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            transition: background 0.3s ease, color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
             overflow-x: hidden;
         }
 
         .patina-font {
-            font-family: 'Cinzel Decorative', Georgia, serif;
-        }
-
-        .main-wrapper {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 0.05em;
         }
 
         /* Animated Background */
-        .animated-bg {
+        .steam-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(205, 127, 50, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #0d1117 0%, #1a1f2e 100%);
+            z-index: -1;
         }
 
-        .floating-particle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--accent-primary);
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
-        }
-
+        /* Floating gears animation */
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .gear {
+            animation: rotate 20s linear infinite;
+            opacity: 0.1;
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(22, 27, 34, 0.7);
             backdrop-filter: blur(10px);
-            background: rgba(10, 24, 16, 0.8);
-            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(205, 127, 50, 0.2);
         }
 
-        [data-theme="light"] .header {
-            background: rgba(241, 248, 233, 0.9);
-            border-bottom: 1px solid rgba(102, 187, 106, 0.3);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px 60px;
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
         }
 
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            text-align: center;
-            z-index: 10;
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-bronze);
+            border-radius: 5px;
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.6)); }
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .hero-tagline {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.7;
-            font-weight: 300;
-        }
-
-        /* Buttons */
+        /* Hover effects */
         .btn-primary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent-primary);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent-bronze), var(--accent-gold));
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-primary);
-            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
         }
 
         .btn-primary:hover {
-            background: transparent;
-            color: var(--accent-primary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 6px 20px rgba(205, 127, 50, 0.5);
         }
 
         .btn-secondary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--accent-primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            border: 2px solid var(--accent-bronze);
+            color: var(--accent-bronze);
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-primary);
-            margin: 0.5rem;
         }
 
         .btn-secondary:hover {
-            background: var(--accent-primary);
-            color: #ffffff;
+            background: var(--accent-bronze);
+            color: var(--bg-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
         }
 
-        /* Section Styling */
-        .section {
+        /* Theme cards */
+        .theme-card {
+            transition: all 0.3s ease;
             position: relative;
-            padding: 100px 20px;
-            z-index: 10;
+            overflow: hidden;
         }
 
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .about-card {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(76, 175, 80, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
-            border-color: var(--accent-primary);
-        }
-
-        .about-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-primary);
-        }
-
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            border: 1px solid rgba(76, 175, 80, 0.2);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(76, 175, 80, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-3px);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--bg-secondary);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(76, 175, 80, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            padding: 0.8rem 1rem;
-            background: var(--bg-primary);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-family: inherit;
-            transition: all 0.3s ease;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(205, 127, 50, 0.2), transparent);
+            transition: left 0.5s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        .theme-card:hover::before {
+            left: 100%;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(205, 127, 50, 0.3);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(76, 175, 80, 0.2);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-primary);
-            border-radius: 50%;
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(76, 175, 80, 0.2);
-        }
-
-        .social-link:hover {
-            background: var(--accent-primary);
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
-
-        /* Mobile Menu */
+        /* Mobile menu */
         .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
-            padding: 1rem;
-            z-index: 99;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
         }
 
         .mobile-menu.active {
-            display: block;
+            transform: translateX(0);
         }
 
-        .mobile-menu a {
-            display: block;
-            padding: 1rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(76, 175, 80, 0.1);
-            transition: all 0.3s ease;
+        /* Stats counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .mobile-menu a:hover {
-            background: var(--bg-primary);
-            padding-left: 1.5rem;
+        .stat-item {
+            animation: countUp 0.6s ease forwards;
         }
 
-        /* Theme Toggle */
-        .theme-toggle {
-            background: var(--bg-secondary);
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+        /* Language switcher */
+        .lang-switch {
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
+        }
+
+        .lang-switch.active {
+            color: var(--accent-gold);
             font-weight: 600;
         }
 
-        .theme-toggle:hover {
-            background: var(--accent-primary);
-            color: #ffffff;
-        }
-
-        /* Language Toggle */
-        .lang-toggle {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            border-radius: 20px;
+        /* Dark mode toggle */
+        .mode-toggle {
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search bar */
+        .search-bar {
             transition: all 0.3s ease;
-            font-weight: 600;
         }
 
-        .lang-btn.active {
-            background: var(--accent-primary);
-            color: #ffffff;
+        .search-bar:focus {
+            box-shadow: 0 0 20px rgba(205, 127, 50, 0.3);
         }
 
-        .lang-btn:hover {
-            background: var(--accent-primary);
-            color: #ffffff;
+        /* Parallax sections */
+        .parallax-section {
+            transition: transform 0.1s ease-out;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 80vh;
-                padding: 100px 20px 60px;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .desktop-nav {
-                display: none;
-            }
+        /* Project filter buttons */
+        .filter-btn {
+            transition: all 0.3s ease;
         }
 
-        @media (min-width: 769px) {
-            .mobile-menu-btn {
-                display: none;
-            }
+        .filter-btn.active {
+            background: var(--accent-bronze);
+            color: var(--bg-dark);
         }
 
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* Social icons */
+        .social-icon {
+            transition: all 0.3s ease;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .social-icon:hover {
+            color: var(--accent-gold);
+            transform: translateY(-3px);
         }
     </style>
 </head>
-<body>
-    <div class="main-wrapper">
-        <!-- Animated Background -->
-        <div class="animated-bg" id="animatedBg"></div>
+<body class="h-full">
+    <!-- Animated Background -->
+    <div class="steam-bg"></div>
+    
+    <!-- Floating Gears Decoration -->
+    <svg class="gear" style="position: fixed; top: 10%; left: 5%; width: 80px; height: 80px; pointer-events: none;" viewBox="0 0 100 100">
+        <path d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z" fill="none" stroke="rgba(205, 127, 50, 0.3)" stroke-width="2"/>
+    </svg>
+    <svg class="gear" style="position: fixed; bottom: 15%; right: 10%; width: 60px; height: 60px; pointer-events: none; animation-delay: -5s;" viewBox="0 0 100 100">
+        <path d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z" fill="none" stroke="rgba(212, 175, 55, 0.3)" stroke-width="2"/>
+    </svg>
 
-        <!-- Header -->
-        <header class="header">
-            <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
-                <h1 class="patina-font" style="font-size: 1.8rem; margin: 0;" id="headerName">Viandra Susanto</h1>
-                
-                <nav class="desktop-nav" style="display: flex; align-items: center; gap: 2rem;">
-                    <a href="#home" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Beranda</a>
-                    <a href="#about" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Tentang</a>
-                    <a href="#skills" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Keahlian</a>
-                    <a href="#contact" style="color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Kontak</a>
-                    
-                    <div class="lang-toggle">
-                        <button class="lang-btn active" data-lang="id">ID</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                    
-                    <button class="theme-toggle" id="themeToggle">☀️</button>
-                </nav>
-
-                <button class="mobile-menu-btn theme-toggle" id="mobileMenuBtn">☰</button>
-            </div>
-        </header>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#home">Beranda</a>
-            <a href="#about">Tentang</a>
-            <a href="#skills">Keahlian</a>
-            <a href="#contact">Kontak</a>
-            <div style="display: flex; justify-content: space-between; padding: 1rem; gap: 1rem;">
-                <div class="lang-toggle">
-                    <button class="lang-btn active" data-lang="id">ID</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
+    <!-- Header / Navbar -->
+    <header class="glass fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="patina-font text-2xl font-bold bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent" id="siteName">
+                    Portfolio
                 </div>
-                <button class="theme-toggle" id="themeToggleMobile">☀️</button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-amber-500 transition-colors">Beranda</a>
+                    <a href="#about" class="hover:text-amber-500 transition-colors">Tentang</a>
+                    <a href="#portfolio" class="hover:text-amber-500 transition-colors">Portofolio</a>
+                    <a href="#skills" class="hover:text-amber-500 transition-colors">Keahlian</a>
+                    <a href="#themes" class="hover:text-amber-500 transition-colors">Tema Phunk</a>
+                    <a href="#contact" class="hover:text-amber-500 transition-colors">Kontak</a>
+                </div>
+
+                <!-- Language & Mode Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="lang-switch active" data-lang="id">ID</span>
+                        <span class="text-gray-500">/</span>
+                        <span class="lang-switch" data-lang="en">EN</span>
+                    </div>
+                    <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" id="mobileMenuBtn" aria-label="Open mobile menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 left-0 w-64 h-full glass z-40 md:hidden" id="mobileMenu">
+        <div class="p-6">
+            <button class="mb-8" id="closeMobileMenu" aria-label="Close mobile menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <nav class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-amber-500 transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-amber-500 transition-colors">Tentang</a>
+                <a href="#portfolio" class="hover:text-amber-500 transition-colors">Portofolio</a>
+                <a href="#skills" class="hover:text-amber-500 transition-colors">Keahlian</a>
+                <a href="#themes" class="hover:text-amber-500 transition-colors">Tema Phunk</a>
+                <a href="#contact" class="hover:text-amber-500 transition-colors">Kontak</a>
+            </nav>
+            <div class="mt-8 flex items-center space-x-4">
+                <span class="lang-switch active" data-lang="id">ID</span>
+                <span class="text-gray-500">/</span>
+                <span class="lang-switch" data-lang="en">EN</span>
             </div>
         </div>
+    </div>
 
+    <!-- Main Content Wrapper -->
+    <div class="w-full h-full overflow-auto">
         <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-content fade-in">
-                <h2 class="hero-title patina-font" id="heroName">Viandra Susanto</h2>
-                <p class="hero-subtitle" id="heroProfession">Pelajar & Calon Ahli Pangan</p>
-                <p class="hero-tagline" id="heroTagline">Crafting Sustainable Future Through Agriculture</p>
-                <div>
-                    <a href="#about" class="btn-primary">Lihat Profil</a>
-                    <a href="#contact" class="btn-secondary">Hubungi Saya</a>
+        <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-20">
+            <div class="container mx-auto text-center parallax-section">
+                <div class="mb-6">
+                    <h1 class="patina-font text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 bg-clip-text text-transparent" id="heroName">
+                        Your Name Here
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 mb-2" id="heroProfession">
+                        Creative Developer & Designer
+                    </p>
+                    <p class="text-lg text-gray-500 patina-font" id="heroTagline">
+                        Crafting Timeless Digital Worlds
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <button class="btn-primary px-8 py-3 rounded-lg font-semibold" id="ctaPrimary">
+                        Lihat Portofolio
+                    </button>
+                    <button class="btn-secondary px-8 py-3 rounded-lg font-semibold" id="ctaSecondary">
+                        Unduh CV
+                    </button>
+                </div>
+
+                <!-- Stats Counter -->
+                <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+                    <div class="stat-item text-center">
+                        <div class="text-3xl font-bold text-amber-500 patina-font">5+</div>
+                        <div class="text-sm text-gray-400 mt-2">Tahun Pengalaman</div>
+                    </div>
+                    <div class="stat-item text-center" style="animation-delay: 0.2s;">
+                        <div class="text-3xl font-bold text-amber-500 patina-font">50+</div>
+                        <div class="text-sm text-gray-400 mt-2">Proyek Selesai</div>
+                    </div>
+                    <div class="stat-item text-center" style="animation-delay: 0.4s;">
+                        <div class="text-3xl font-bold text-amber-500 patina-font">30+</div>
+                        <div class="text-sm text-gray-400 mt-2">Klien Puas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar Section -->
+        <section class="py-8 px-4">
+            <div class="container mx-auto max-w-4xl">
+                <div class="glass rounded-lg p-4">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input 
+                            type="text" 
+                            placeholder="Cari proyek atau keahlian..."
+                            class="search-bar flex-1 bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500"
+                            id="searchInput"
+                        >
+                        <select class="bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500" id="filterTheme">
+                            <option value="all">Semua Tema</option>
+                            <option value="stonephunk">Stonephunk</option>
+                            <option value="bronzephunk">Bronzephunk</option>
+                            <option value="steampunk">Steampunk</option>
+                            <option value="decophunk">Decophunk</option>
+                            <option value="solarpunk">Solarpunk</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="dieselpunk">Dieselpunk</option>
+                            <option value="clockpunk">Clockpunk</option>
+                        </select>
+                        <select class="bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500" id="filterType">
+                            <option value="all">Semua Jenis</option>
+                            <option value="web">Web Development</option>
+                            <option value="design">Design</option>
+                            <option value="game">Game</option>
+                            <option value="research">Research</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section class="section" id="about">
-            <div class="container">
-                <h2 class="section-title patina-font fade-in">Tentang Saya</h2>
-                
-                <div class="about-grid">
-                    <div class="about-card fade-in">
-                        <h3>🌱 Latar Belakang</h3>
-                        <p id="aboutBackground">Saya adalah pelajar di SMAN 1 Subang yang memiliki ketertarikan mendalam pada bidang pertanian dan bercocok tanam. Terbiasa dengan tantangan lapangan, saya memiliki ketahanan dalam berbagai kondisi cuaca dan lingkungan.</p>
-                    </div>
-                    
-                    <div class="about-card fade-in">
-                        <h3>🎯 Visi & Misi</h3>
-                        <p id="aboutVision">Memiliki cita-cita untuk berkarier sebagai ahli pangan di Pemerintah Daerah. Berkomitmen menempuh pendidikan di bidang pertanian, pengolahan limbah, dan ketahanan pangan untuk masa depan yang berkelanjutan.</p>
-                    </div>
-                    
-                    <div class="about-card fade-in">
-                        <h3>💚 Passion</h3>
-                        <p id="aboutPassion">Hobi saya adalah menanam pohon dan bertani. Saya percaya bahwa pertanian berkelanjutan adalah kunci untuk masa depan yang lebih hijau dan sejahtera bagi Indonesia.</p>
-                    </div>
+        <section id="about" class="py-20 px-4">
+            <div class="container mx-auto max-w-4xl">
+                <div class="glass rounded-lg p-8 parallax-section">
+                    <h2 class="patina-font text-4xl font-bold mb-6 text-center bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent" id="aboutTitle">
+                        Tentang Saya
+                    </h2>
+                    <p class="text-lg text-gray-300 leading-relaxed text-center" id="aboutText">
+                        Seorang developer dan desainer yang passionate dalam menciptakan pengalaman digital yang unik dan berkesan. Mengombinasikan estetika klasik dengan teknologi modern untuk menghasilkan karya yang timeless.
+                    </p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Stats -->
-                <div class="stats-grid">
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">16</div>
-                        <div class="stat-label">Tahun</div>
+        <!-- Phunk Themes Section -->
+        <section id="themes" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="patina-font text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">
+                    Tema Phunk
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Stonephunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🗿</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Stonephunk</h3>
+                        <p class="text-gray-400 text-sm">Fondasi & prinsip dasar dalam setiap proyek</p>
                     </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">SMAN 1</div>
-                        <div class="stat-label" id="locationLabel">Subang</div>
+                    
+                    <!-- Bronzephunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🔱</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Bronzephunk</h3>
+                        <p class="text-gray-400 text-sm">Awal eksplorasi kreatif dan pembelajaran</p>
                     </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">🌾</div>
-                        <div class="stat-label">Pertanian</div>
+                    
+                    <!-- Steampunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">⚙️</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Steampunk</h3>
+                        <p class="text-gray-400 text-sm">Mekanika & sistem yang kompleks</p>
+                    </div>
+                    
+                    <!-- Decophunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">💎</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Decophunk</h3>
+                        <p class="text-gray-400 text-sm">Estetika & desain visual yang memukau</p>
+                    </div>
+                    
+                    <!-- Solarpunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🌿</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Solarpunk</h3>
+                        <p class="text-gray-400 text-sm">Visi masa depan yang berkelanjutan</p>
+                    </div>
+                    
+                    <!-- Cyberpunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Cyberpunk</h3>
+                        <p class="text-gray-400 text-sm">Teknologi & AI yang canggih</p>
+                    </div>
+                    
+                    <!-- Dieselpunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🏭</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Dieselpunk</h3>
+                        <p class="text-gray-400 text-sm">Kekuatan industrial & mekanis</p>
+                    </div>
+                    
+                    <!-- Clockpunk -->
+                    <div class="theme-card glass rounded-lg p-6">
+                        <div class="text-4xl mb-4">🕰️</div>
+                        <h3 class="patina-font text-xl font-bold mb-2 text-amber-500">Clockpunk</h3>
+                        <p class="text-gray-400 text-sm">Presisi & ketepatan waktu</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section class="section" id="skills" style="background: var(--bg-secondary);">
-            <div class="container">
-                <h2 class="section-title patina-font fade-in">Keahlian & Minat</h2>
-                
-                <div class="skills-grid">
-                    <div class="skill-card fade-in">
-                        <div class="skill-icon">🌱</div>
-                        <div class="skill-name">Bercocok Tanam</div>
-                        <p style="opacity: 0.8; font-size: 0.95rem;">Pengalaman dalam menanam dan merawat berbagai jenis tanaman</p>
+        <section id="skills" class="py-20 px-4">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="patina-font text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">
+                    Keahlian
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">💻</div>
+                        <p class="text-sm">Web Dev</p>
                     </div>
-                    
-                    <div class="skill-card fade-in">
-                        <div class="skill-icon">🌾</div>
-                        <div class="skill-name">Pertanian Berkelanjutan</div>
-                        <p style="opacity: 0.8; font-size: 0.95rem;">Pemahaman tentang praktik pertanian yang ramah lingkungan</p>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🎨</div>
+                        <p class="text-sm">UI/UX Design</p>
                     </div>
-                    
-                    <div class="skill-card fade-in">
-                        <div class="skill-icon">🍃</div>
-                        <div class="skill-name">Ketahanan Pangan</div>
-                        <p style="opacity: 0.8; font-size: 0.95rem;">Minat dalam sistem pangan yang berkelanjutan</p>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">📱</div>
+                        <p class="text-sm">Mobile Apps</p>
                     </div>
-                    
-                    <div class="skill-card fade-in">
-                        <div class="skill-icon">♻️</div>
-                        <div class="skill-name">Pengolahan Limbah</div>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🎮</div>
+                        <p class="text-sm">Game Dev</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">⚡</div>
+                        <p class="text-sm">Performance</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🔒</div>
+                        <p class="text-sm">Security</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">☁️</div>
+                        <p class="text-sm">Cloud</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🤝</div>
+                        <p class="text-sm">Teamwork</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Portfolio Preview Section -->
+        <section id="portfolio" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="patina-font text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">
+                    Proyek Unggulan
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="theme-card glass rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-amber-900 to-amber-700 flex items-center justify-center">
+                            <span class="text-6xl">🏛️</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-amber-500 font-semibold">STONEPHUNK</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Foundation Framework</h3>
+                            <p class="text-gray-400 text-sm mb-4">System architecture untuk aplikasi enterprise</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Architecture</span>
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Backend</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="theme-card glass rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-orange-900 to-orange-700 flex items-center justify-center">
+                            <span class="text-6xl">⚙️</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-amber-500 font-semibold">STEAMPUNK</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Mechanical Dashboard</h3>
+                            <p class="text-gray-400 text-sm mb-4">Interface dashboard dengan animasi mekanis</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Frontend</span>
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Animation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="theme-card glass rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-900 to-green-700 flex items-center justify-center">
+                            <span class="text-6xl">🌿</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-amber-500 font-semibold">SOLARPUNK</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2">Eco Tracker App</h3>
+                            <p class="text-gray-400 text-sm mb-4">Aplikasi untuk melacak jejak karbon personal</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Mobile</span>
+                                <span class="text-xs bg-amber-900 px-2 py-1 rounded">Sustainability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4">
+            <div class="container mx-auto max-w-2xl">
+                <h2 class="patina-font text-4xl font-bold mb-12 text-center bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">
+                    Mari Berkolaborasi
+                </h2>
+                <div class="glass rounded-lg p-8">
+                    <form id="contactForm">
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium mb-2">Nama</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                class="w-full bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500"
+                                required
+                            >
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="w-full bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500"
+                                required
+                            >
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium mb-2">Pesan</label>
+                            <textarea 
+                                id="message" 
+                                rows="4" 
+                                class="w-full bg-transparent border border-amber-900 rounded-lg px-4 py-2 focus:outline-none focus:border-amber-500"
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">Rating Portfolio</label>
+                            <div class="flex gap-2">
+                                <button type="button" class="rating-btn text-2xl hover:scale-110 transition-transform" data-rating="1">⭐</button>
+                                <button type="button" class="rating-btn text-2xl hover:scale-110 transition-transform" data-rating="2">⭐</button>
+                                <button type="button" class="rating-btn text-2xl hover:scale-110 transition-transform" data-rating="3">⭐</button>
+                                <button type="button" class="rating-btn text-2xl hover:scale-110 transition-transform" data-rating="4">⭐</button>
+                                <button type="button" class="rating-btn text-2xl hover:scale-110 transition-transform" data-rating="5">⭐</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary w-full px-8 py-3 rounded-lg font-semibold">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                    <div id="formMessage" class="mt-4 text-center hidden"></div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="flex justify-center gap-6 mt-12">
+                    <a href="#" class="social-icon text-2xl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        💼
+                    </a>
+                    <a href="#" class="social-icon text-2xl" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        🐙
+                    </a>
+                    <a href="#" class="social-icon text-2xl" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        🐦
+                    </a>
+                    <a href="#" class="social-icon text-2xl" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        📷
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="glass py-8 px-4 mt-20">
+            <div class="container mx-auto text-center">
+                <p class="patina-font text-lg mb-2" id="footerQuote">
+                    "Building the future, one line of code at a time"
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2024 <span id="footerName">Portfolio</span>. All rights reserved.
+                </p>
+                <div class="flex justify-center gap-4 mt-4 text-sm text-gray-400">
+                    <a href="#home" class="hover:text-amber-500">Beranda</a>
+                    <span>•</span>
+                    <a href="#about" class="hover:text-amber-500">Tentang</a>
+                    <span>•</span>
+                    <a href="#portfolio" class="hover:text-amber-500">Portofolio</a>
+                    <span>•</span>
+                    <a href="#contact" class="hover:text-amber-500">Kontak</a>
+                </div>
+            </div>
+        </footer>
     </div>
-</body>
-</html>
-    
+
+    <script>
+        // Default Configuration
+        const defaultConfig = {
+            site_name: 'Portfolio',
+            tagline: 'Crafting Timeless Digital Worlds',
+            profession: 'Creative Developer & Designer',
+            cta_primary: 'Lihat Portofolio',
+            cta_secondary: 'Unduh CV',
+            about_title: 'Tentang Saya',
+            about_text: 'Seorang developer dan desainer yang passionate dalam menciptakan pengalaman digital yang unik dan berkesan. Mengombinasikan estetika klasik dengan teknologi modern untuk menghasilkan karya yang timeless.',
+            footer_quote: '"Building the future, one line of code at a time"'
+        };
+
+        // Element SDK Implementation
+        const onConfigChange = async (config) => {
+            document.getElementById('siteName').textContent = config.site_name || defaultConfig.site_name;
+            document.getElementById('heroName').textContent = config.site_name || defaultConfig.site_name;
+            document.getElementById('heroTagline').textContent = config.tagline || defaultConfig.tagline;
+            document.getElementById('heroProfession').textContent = config.profession || defaultConfig.profession;
+            document.getElementById('ctaPrimary').textContent = config.cta_primary || defaultConfig.cta_primary;
+            document.getElementById('ctaSecondary').textContent = config.cta_secondary || defaultConfig.cta_secondary;
+            document.getElementById('aboutTitle').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('aboutText').textContent = config.about_text || defaultConfig.about_text;
+            document.getElementById('footerQuote').textContent = config.footer_quote || defaultConfig.footer_quote;
+            document.getElementById('footerName').textContent = config.site_name || defaultConfig.site_name;
+        };
+
+        const mapToCapabilities = (config) => ({
+            recolorables: [],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined
+        });
+
+        const mapToEditPanelValues = (config) => new Map([
+            ['site_name', config.site_name || defaultConfig.site_name],
+            ['tagline', config.tagline || defaultConfig.tagline],
+            ['profession', config.profession || defaultConfig.profession],
+            ['cta_primary', config.cta_primary || defaultConfig.cta_primary],
+            ['cta_secondary', config.cta_secondary || defaultConfig.cta_secondary],
+            ['about_title', config.about_title || defaultConfig.about_title],
+            ['about_text', config.about_text || defaultConfig.about_text],
+            ['footer_quote', config.footer_quote || defaultConfig.footer_quote]
+        ]);
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Language Switcher
+        document.querySelectorAll('.lang-switch').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.lang-switch').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                const lang = e.target.dataset.lang;
+                // Language switching logic would go here
+                console.log('Language switched to:', lang);
+            });
+        });
+
+        // Dark Mode Toggle
+        const modeToggle = document.getElementById('modeToggle');
+        let isDark = true;
+
+        modeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.documentElement.style.setProperty('--bg-dark', '#0d1117');
+                document.documentElement.style.setProperty('--bg-card', '#161b22');
+            } else {
+                document.documentElement.style.setProperty('--bg-dark', '#f5f5f5');
+                document.documentElement.style.setProperty('--bg-card', '#ffffff');
+            }
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-section');
+            
+            parallaxElements.forEach((el, index) => {
+                const speed = 0.1 + (index * 0.05);
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterTheme = document.getElementById('filterTheme');
+        const filterType = document.getElementById('filterType');
+
+        searchInput.addEventListener('input', (e) => {
+            console.log('Search:', e.target.value);
+            // Search logic would go here
+        });
+
+        filterTheme.addEventListener('change', (e) => {
+            console.log('Filter by theme:', e.target.value);
+            // Filter logic would go here
+        });
+
+        filterType.addEventListener('change', (e) => {
+            console.log('Filter by type:', e.target.value);
+            // Filter logic would go here
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Rating System
+        let selectedRating = 0;
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectedRating = parseInt(e.target.dataset.rating);
+                document.querySelectorAll('.rating-btn').forEach((b, index) => {
+                    if (index < selectedRating) {
+                        b.style.opacity = '1';
+                    } else {
+                        b.style.opacity = '0.3';
+                    }
+                });
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                rating: selectedRating
+            };
+
+            // Show success message
+            formMessage.textContent = 'Terima kasih! Pesan Anda telah terkirim.';
+            formMessag
